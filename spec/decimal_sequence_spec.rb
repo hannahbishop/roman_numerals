@@ -16,4 +16,16 @@ describe DecimalSequence do
     sequence = DecimalSequence.new()
     expect(sequence.value).to eq([])
   end
+
+  context "aggregates itself" do
+    it "sums non-decreasing terms" do
+      sequence = DecimalSequence.new([10, 10, 100])
+      expect(sequence.aggregate()).to eq(120)
+    end
+
+    it "subtracts decreasing terms" do
+      sequence = DecimalSequence.new([10, 1, 100])
+      expect(sequence.aggregate()).to eq(109)
+    end
+  end
 end
