@@ -1,10 +1,16 @@
 require_relative './roman_numeral'
+require_relative './decimal_roman_translator'
 
 class RomanCalculator
+  def initialize()
+    @to_decimal = DecimalRomanTranslator.new()
+  end
+
   #TODO: Use something besides eval here
   def call(input_opcode) 
     opcode = prepare(input_opcode)
-    eval(opcode)
+    result = eval(opcode)
+    @to_decimal.call(result)
   end
 
   def prepare(opcode)
