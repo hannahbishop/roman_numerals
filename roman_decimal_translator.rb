@@ -16,11 +16,11 @@ class RomanDecimalTranslator
   end
 
   def call(string)
-    string.downcase
+    string = string.downcase
     decimal_conversion = DecimalSequence.new()
-    string.each_char { |c|
+    string.reverse.each_char { |c|
       decimal_conversion.add(@definitions[c])
     }
-    decimal_conversion
+    decimal_conversion.aggregate()
   end
 end
