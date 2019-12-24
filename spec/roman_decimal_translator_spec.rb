@@ -60,9 +60,14 @@ describe RomanDecimalTranslator do
   end
 
   it "translates multi-character numerals with subtraction terms" do
-    test_string = "MCDXCIV"
-    translation = translator.call(test_string)
+    string1 = "IV"
+    string2 = "xix"
+    string3 = "xl"
+    string4 = "cdxciv"
 
-    expect(translation).to eq(1494)
+    expect(translator.call(string1)).to eq(4)
+    expect(translator.call(string2)).to eq(19)
+    expect(translator.call(string3)).to eq(40)
+    expect(translator.call(string4)).to eq(494)
   end
 end
